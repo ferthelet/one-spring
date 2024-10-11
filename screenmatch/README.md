@@ -28,6 +28,39 @@ Bienvenido al modulo Java Spring Boot
 
 Es la forma en que gestionan las dependencias y cómo describen la lógica de construcción. Maven utiliza archivos XML para gestionar las dependencias y describe la lógica de construcción mediante complementos, mientras que Gradle utiliza un formato de script y describe la lógica de construcción como código.
 
+## Interfaz CommandLineRunner
+
+Permite ejecutar alguna acción justo después de la inicialización de nuestra aplicación. Puede ser muy útil, por ejemplo, si queremos cargar algunos datos en nuestra base de datos justo al iniciar nuestra aplicación.
+
+Cuando se inicia una aplicación Spring Boot, pueden ocurrir varias operaciones automáticas, como la creación de beans, configuración de la base de datos, entre otras. La apertura para personalizar estas operaciones es limitada, y aquí es donde entra en juego la interfaz CommandLineRunner.
+
+La interfaz CommandLineRunner representa una tarea que se ejecutará después de la inicialización de Spring Boot, es decir, permite definir código que se ejecutará automáticamente cuando se inicie la aplicación.
+
+```java
+@SpringBootApplication
+public class MyCommandLineRunner implements CommandLineRunner {
+   
+   @Override
+    public void run(String... args) throws Exception {
+        System.out.println("¡Hola, Mundo!");
+    }
+}
+```
+
+Observa que en el ejemplo anterior, creamos una clase llamada `MyCommandLineRunner` que implementa la interfaz `CommandLineRunner`. En el método `run`, insertamos la acción que deseamos que se ejecute justo después de que la aplicación se inicie, en este caso, simplemente imprimimos `¡Hola, Mundo!`.
+
+### Uso
+
+La interfaz `CommandLineRunner` es muy versátil y se puede utilizar en diversas situaciones. Como se mencionó anteriormente, se puede utilizar para cargar datos en una base de datos. También puede utilizarse para iniciar recursos, como conexiones de red, y para verificar la integridad de ciertos componentes o servicios con los que la aplicación va a interactuar.
+
+Es importante recordar que `CommandLineRunner` se ejecuta solo en la inicialización de la aplicación, así que no debe utilizarse para tareas que deben ocurrir periódicamente durante el funcionamiento de la aplicación. Para eso, `Spring` ofrece otras herramientas que serán más adecuadas.
+
+### Ejemplo
+
+Imaginemos una situación en la que tenemos que cargar una gran cantidad de datos en nuestra base de datos tan pronto como nuestra aplicación `Spring` inicie. Bueno, manualmente esto sería desafiante y llevaría mucho tiempo; sin embargo, la interfaz `CommandLineRunner` hace que esta tarea sea extremadamente más simple.
+
+Al profundizar en tu conocimiento de `Spring`, tendrás diversas opciones para optimizar tus aplicaciones y hacer que tu código sea más limpio y eficaz. `Spring` es un `framework` que facilita el desarrollo de aplicaciones en Java. Ofrece un modelo de programación completo y simplificado, ocultando muchos de los detalles de bajo nivel. Como resultado, puedes concentrarte en escribir tu código sin preocuparte por una multitud de detalles técnicos.
+
 ## Folder Structure en VSCode
 
 The workspace contains two folders by default, where:

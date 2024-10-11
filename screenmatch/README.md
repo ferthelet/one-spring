@@ -1,6 +1,6 @@
 # Java Spring Boot
 
-Bienvenido al modulo Java pring Boot
+Bienvenido al modulo Java Spring Boot
 
 ## Links
 

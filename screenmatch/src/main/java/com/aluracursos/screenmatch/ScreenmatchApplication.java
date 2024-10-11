@@ -19,7 +19,5 @@ public class ScreenmatchApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("Hola Mundo desde Spring");
-		
 	}
-
 }

@@ -61,6 +61,32 @@ Imaginemos una situación en la que tenemos que cargar una gran cantidad de dato
 
 Al profundizar en tu conocimiento de `Spring`, tendrás diversas opciones para optimizar tus aplicaciones y hacer que tu código sea más limpio y eficaz. `Spring` es un `framework` que facilita el desarrollo de aplicaciones en Java. Ofrece un modelo de programación completo y simplificado, ocultando muchos de los detalles de bajo nivel. Como resultado, puedes concentrarte en escribir tu código sin preocuparte por una multitud de detalles técnicos.
 
+## Consumo de una API
+
+Crearemos la clase llamada `ConsumoAPI` dentro de un paquete llamado `service`. En esta clase, tendremos un método llamado `obtenerDatos` que devuelve una cadena de texto con el `JSON` correspondiente a la respuesta de la solicitud.
+
+[Codigo visto en clase de Java OO](https://app.aluracursos.com/course/java-consumir-api-escribir-archivos-manejar-errores/task/86624)
+
+```java
+public String obtenerDatos(String url) {
+    HttpClient client = HttpClient.newHttpClient();
+    HttpRequest request = HttpRequest.newBuilder()
+        .uri(URI.create(url))
+        .build();
+    HttpResponse<String> response = null;
+    try {
+        response = client
+            .send(request, HttpResponse.BodyHandlers.ofString());
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    } catch (InterruptedException e) {
+        throw new RuntimeException(e);
+    }
+    String json = response.body();
+    return json;
+}
+```
+
 ## Folder Structure en VSCode
 
 The workspace contains two folders by default, where:

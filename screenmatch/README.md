@@ -87,6 +87,22 @@ public String obtenerDatos(String url) {
 }
 ```
 
+## @JsonAlias() y @JsonProperty
+
+Son anotaciones de Jackson, una biblioteca Java para procesar JSON, que ayudan a mapear propiedades de clase a campos JSON.
+
+### @JsonProperty()
+
+Esta anotación se utiliza para definir el nombre de la propiedad JSON asociada al campo Java. Cuando el JSON se **serializa**, es decir, se convierte de objetos Java a JSON, el nombre especificado en `@JsonProperty` se utilizará como la clave para el campo en el JSON de salida. De manera similar, cuando el JSON se deserializa (se convierte de JSON a objetos Java), la biblioteca busca el nombre especificado en `@JsonProperty` para mapear el valor JSON al campo Java.
+
+Entonces, si deseas usar un nombre diferente en el JSON, puedes utilizar `@JsonProperty("nombreEnJson")`. Esto es útil, por ejemplo, cuando necesitas trabajar con un JSON que sigue una convención de nomenclatura diferente a la de tu clase Java.
+
+### @JsonAlias()
+
+Se utiliza para definir uno o más alias para el nombre de la propiedad JSON asociada al campo Java. Al **deserializar**, `@JsonAlias` permite que la biblioteca encuentre el valor JSON correspondiente, incluso si el nombre de la propiedad en el JSON no coincide exactamente con el nombre del campo Java.
+
+Esto es útil cuando trabajas con diferentes versiones de un JSON o cuando deseas permitir que una propiedad sea referenciada por nombres diferentes.
+
 ## Folder Structure en VSCode
 
 The workspace contains two folders by default, where:

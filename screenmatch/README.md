@@ -103,6 +103,122 @@ Se utiliza para definir uno o más alias para el nombre de la propiedad JSON aso
 
 Esto es útil cuando trabajas con diferentes versiones de un JSON o cuando deseas permitir que una propiedad sea referenciada por nombres diferentes.
 
+## Generics
+
+En Java, los genéricos permiten crear clases, interfaces y métodos que pueden trabajar con tipos desconocidos o parámetros genéricos. Proporcionan una forma de escribir código flexible y reutilizable, haciéndolo independiente de tipos específicos y permitiendo que funcione con diferentes tipos de datos.
+
+Para crear una clase o método genérico, necesitas usar parámetros de tipo (tipos genéricos) que se representan entre corchetes angulares <>. Por lo general, usamos letras mayúsculas únicas para representar los tipos genéricos, pero puedes usar cualquier identificador válido en Java. Aquí tienes un ejemplo de una clase genérica llamada Caja, que almacena un valor de un tipo desconocido:
+
+```java
+public class Caja<T> {
+    private T contenido;
+
+    public T getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(T contenido) {
+        this.contenido = contenido;
+    }
+}
+```
+
+En el ejemplo anterior, podemos crear un objeto del tipo Caja y almacenar cualquier tipo de valor en él. Aquí tienes un ejemplo:
+
+```java
+public class TesteaCaja {
+    public static void main(String[] args) {
+        Caja<String> cajaDeTexto = new Caja();
+        cajaDeTexto.setContenido("Guardando texto en mi caja!");
+
+        Caja<Integer> cajaDeEdad = new Caja();
+        cajaDeEdad.setContenido(30);
+
+        Caja<Double> cajaDeValor = new Caja<>();
+        cajaDeValor.setContenido(150.50);
+    }
+}
+```
+
+Observa que podemos utilizar la clase Caja para incluir valores de diferentes tipos. Para la variable cajaDeTexto, el compilador garantizará que solo se puedan almacenar valores del tipo String. Para la variable cajaDeEdad, el compilador garantizará que solo se puedan almacenar valores del tipo Integer, y así sucesivamente.
+
+### Método Genérico
+
+Para crear un método genérico, puedes usar la misma sintaxis con parámetros de tipo entre corchetes angulares. Aquí tienes un ejemplo de un método genérico, que pertenece a la clase Caja y que debería sumar el valor pasado por parámetro al contenido de la caja:
+
+```java
+public <T> T sumaContenidoEnCaja(T valor) {
+    if (this.contenido instanceof Integer c && valor instanceof Integer i) {
+        Integer resultado = c + i;
+        return (T) resultado;
+    } else if (this.contenido instanceof Double c && valor instanceof Double d) {
+        Double resultado = c + d;
+        return (T) resultado;
+    } else if (this.contenido instanceof String c && valor instanceof String s) {
+        String resultado = c + "\n" + s;
+        return (T) resultado;
+    }
+
+    return null;
+}
+```
+
+La finalidad del método anterior es realizar la suma entre el contenido actual de la caja (this.contenido) y el valor pasado como parámetro (valor). El método es genérico y puede usarse para diferentes tipos de contenido que pueden sumarse, como Integer, Double y String.
+
+Veamos paso a paso lo que sucede:
+
+```java
+public <T> T sumaContenidoEnCaja(T valor) {
+    ...
+}
+```
+
+El método es genérico y recibe un parámetro valor del tipo genérico T, que es el mismo tipo que se devolverá como resultado de la suma.
+
+Luego, el método comienza con una serie de condicionales if que verifican el tipo del contenido actual de la caja (this.contenido) y el tipo del valor pasado como parámetro (valor).
+
+```java
+if (this.contenido instanceof Integer c && valor instanceof Integer i) {
+    // Realiza la suma entre los valores y almacena el resultado en una variable
+    Integer resultado = c + i;
+    // Devuelve el resultado como tipo genérico `T` (en este caso, `Integer`)
+    return (T) resultado;
+}
+```
+
+La verificación se realiza utilizando los operadores instanceof y los operadores de coincidencia de patrones (instanceof con variables de patrón) disponibles a partir de Java 16.
+
+Si el contenido actual (this.contenido) y el valor (valor) son ambos del mismo tipo, se realiza la suma o la concatenación, como en el caso de String. Si el tipo de la variable valor es diferente al tipo del contenido, devolvemos el valor anterior del contenido. Veamos cómo quedaría en nuestra clase TesteaCaja:
+
+```java
+public static void main(String[] args) {
+    Caja<String> cajaDeTexto = new Caja();
+    cajaDeTexto.setContenido("Guardando texto en mi caja!");
+    System.out.println(cajaDeTexto.sumaContenidoEnCaja("Otra línea"));
+
+    Caja<Integer> cajaDeEdad = new Caja();
+    cajaDeEdad.setContenido(30);
+    System.out.println(cajaDeEdad.sumaContenidoEnCaja(26));
+
+    Caja<Double> cajaDeValor = new Caja<>();
+    cajaDeValor.setContenido(150.50);
+    System.out.println(cajaDeValor.sumaContenidoEnCaja(350.50));
+    System.out.println(cajaDeValor.sumaContenidoEnCaja("texto"));
+}
+```
+
+Al ejecutar el código anterior, obtendremos la siguiente salida en nuestro terminal:
+
+```bash
+Guardando texto en mi caja!
+Otra línea
+56
+501.0
+null
+```
+
+Observa que en la última línea del código, al intentar incluir un String "texto" en nuestra cajaDeValor, al ejecutar este código obtuvimos un retorno nulo, ya que solo realizamos la suma si ambos tipos eran iguales.
+
 ## Folder Structure en VSCode
 
 The workspace contains two folders by default, where:

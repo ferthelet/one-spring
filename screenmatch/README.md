@@ -14,7 +14,7 @@ Bienvenido al modulo Java Spring Boot
 - Gestión de Dependencias: Maven es excelente para gestionar las dependencias de un proyecto. Las dependencias se declaran en el archivo pom.xml y Maven se encarga de descargarlas automáticamente desde el repositorio central de Maven o repositorios personalizados.
 - Convención sobre Configuración: Maven sigue un conjunto de convenciones, lo que significa que muchas configuraciones están predefinidas y se pueden utilizar directamente sin necesidad de configuración adicional.
 - Ciclo de Vida Estándar: Maven tiene un ciclo de vida estándar con diferentes fases (por ejemplo, compile, test, package, install, deploy), y cada fase ejecuta una serie de metas. El ciclo de vida estándar permite construir y probar fácilmente su proyecto mediante comandos como mvn compile, mvn test y mvn package.
-- Repositorio Central: Maven tiene un repositorio central que contiene una amplia variedad de bibliotecas Java listas para ser utilizadas. 
+- Repositorio Central: Maven tiene un repositorio central que contiene una amplia variedad de bibliotecas Java listas para ser utilizadas.
 
 ## Gradle
 

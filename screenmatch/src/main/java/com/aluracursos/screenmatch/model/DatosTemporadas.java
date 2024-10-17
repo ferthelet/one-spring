@@ -10,4 +10,10 @@ public record DatosTemporadas(
     @JsonAlias("Episodes") List<DatosEpisodio> episodios
 ) {
 
+    // override de toString para que no imprima la referencia de memoria
+    @Override
+    public String toString() {
+        return "DatosTemporadas [numero=" + numero + ", episodios=" + episodios + "]\n";
+    }
+
 }

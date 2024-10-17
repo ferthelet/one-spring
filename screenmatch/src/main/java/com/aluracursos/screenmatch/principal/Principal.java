@@ -20,13 +20,15 @@ public class Principal {
         System.out.println("Bienvenido al Screenmatch");
         System.out.println("Escribe el nombre de la serie que deseas buscar:");
         var nombreSerie = lector.nextLine();
+        System.out.println(URL_BASE + nombreSerie.replace(" ", "+") + API_KEY);
         var json = consumoAPI.obtenerDatos(URL_BASE + nombreSerie.replace(" ", "+") + API_KEY);
         var datos = conversor.obtenerDatos(json, DatosSerie.class);
+        System.out.println(datos);
 
         // busca datos de las temporadaas
         List<DatosTemporadas> temporadas = new ArrayList<>();
         for (int i = 1; i <= datos.totalDeTemporadas(); i++) {
-            json = consumoAPI.obtenerDatos(URL_BASE + nombreSerie.replace(" ", "+") + API_KEY);
+            json = consumoAPI.obtenerDatos(URL_BASE + nombreSerie.replace(" ", "+") + "&Season=" + i + API_KEY);
             temporadas.add(conversor.obtenerDatos(json, DatosTemporadas.class));
         }
         temporadas.forEach(System.out::println);

@@ -54,6 +54,7 @@ public class ScreenmatchApplication implements CommandLineRunner {
 		// temporadas.add(conversor.obtenerDatos(json, DatosTemporadas.class));
 		// }
 		// temporadas.forEach(System.out::println);
+		
 		Principal principal = new Principal();
 		principal.muestraElMenu();
 	}

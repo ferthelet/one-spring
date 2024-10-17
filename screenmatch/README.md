@@ -229,6 +229,62 @@ Observa que en la última línea del código, al intentar incluir un String "tex
 - Creación de Interfaces e Implementación de Métodos: Se demostró la creación de una interfaz con un método genérico que utiliza Generics, así como la implementación de este método en una clase separada.
 - Inclusión de Nuevas Dependencias en el Proyecto: Vimos cómo agregar una nueva dependencia al archivo .pom.xml y cómo este proceso es gestionado por Maven.
 
+## Colecciones
+
+Las colecciones son estructuras de datos fundamentales en Java que nos permiten almacenar y manipular conjuntos de elementos de manera eficiente. Están implementadas a través de la API de colecciones de Java, que forma parte del paquete java.util. Las colecciones proporcionan una variedad de clases e interfaces para almacenar y organizar datos de diferentes maneras, atendiendo a diversas necesidades y escenarios.
+
+La API de colecciones de Java incluye interfaces, clases abstractas y clases concretas para representar diferentes tipos de colecciones. Algunas de las interfaces principales de colecciones son:
+
+- List: Una colección ordenada que permite elementos duplicados. Los elementos se acceden mediante índices.
+- Set: Una colección que no permite elementos duplicados y normalmente no tiene un orden definido.
+- Queue: Una colección que representa una cola, donde los elementos se agregan al final y se eliminan del principio.
+- Map: Una colección de pares clave-valor, donde cada clave es única y mapeada a un valor correspondiente.
+
+Además de estas interfaces, la API de colecciones también incluye varias clases concretas que implementan estas interfaces, como ArrayList, LinkedList, HashSet, TreeSet, HashMap, TreeMap, entre otras.
+
+Una de las interfaces más utilizadas es List. Como se mencionó anteriormente, List es una interfaz que define una secuencia ordenada de elementos, donde cada elemento tiene una posición específica. Al declarar una variable de este tipo, indicamos que trabajaremos con una colección que mantiene el orden de los elementos.
+
+Una de las principales razones para usar List es la flexibilidad que ofrece. Podemos agregar, eliminar y acceder a elementos de manera fácil e intuitiva. Además, también permite la duplicación de elementos, es decir, podemos tener elementos repetidos en la colección. Otra ventaja es la posibilidad de recorrer los elementos de manera secuencial, utilizando bucles de repetición como el for-each, lo que facilita la manipulación de los elementos y la realización de operaciones en masa.
+
+Aquí tienes un ejemplo práctico del uso de List en un código Java:
+
+```java
+import java.util.List;
+import java.util.ArrayList;
+
+public class EjemploList {
+    public static void main(String[] args) {
+        // Creando un objeto del tipo List para almacenar números enteros
+        List<Integer> numeros = new ArrayList<>();
+
+        // Agregando elementos a la lista
+        numeros.add(10);
+        numeros.add(20);
+        numeros.add(30);
+
+        // Accediendo a elementos de la lista
+        System.out.println("Primer elemento: " + numeros.get(0)); // Salida: 10
+        System.out.println("Segundo elemento: " + numeros.get(1)); // Salida: 20
+        System.out.println("Tercer elemento: " + numeros.get(2)); // Salida: 30
+
+        // Recorriendo los elementos de la lista
+        for (Integer numero : numeros) {
+            System.out.println(numero);
+        }
+
+        // Eliminando un elemento de la lista
+        numeros.remove(1); // Elimina el elemento en el índice 1 (20)
+
+        // Verificando el tamaño de la lista
+        System.out.println("Tamaño de la lista: " + numeros.size()); // Salida: 2
+    }
+}
+```
+
+Además, Java también tiene otras colecciones como Set y Map. Set es una colección que no permite elementos duplicados, mientras que Map es una colección que asocia claves a valores, permitiendo la recuperación rápida de un elemento a través de su clave.
+
+Las colecciones de Java son extremadamente útiles en diversas situaciones, como almacenar datos en memoria, realizar operaciones de búsqueda, ordenación y filtrado. Nos ayudan a organizar y manipular grandes cantidades de datos de manera eficiente y elegante.
+
 ## Folder Structure en VSCode
 
 The workspace contains two folders by default, where:

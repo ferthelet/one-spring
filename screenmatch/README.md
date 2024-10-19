@@ -285,6 +285,64 @@ Además, Java también tiene otras colecciones como Set y Map. Set es una colecc
 
 Las colecciones de Java son extremadamente útiles en diversas situaciones, como almacenar datos en memoria, realizar operaciones de búsqueda, ordenación y filtrado. Nos ayudan a organizar y manipular grandes cantidades de datos de manera eficiente y elegante.
 
+## Funciones Lambda
+
+Las funciones Lambda, también llamadas `funciones anónimas`, son una forma de definir funciones que se utilizan con frecuencia solo una vez, directamente en el lugar donde se van a utilizar.
+
+En la programación convencional, normalmente definimos una función en algún lugar de nuestro código y luego la llamamos por su nombre en otro lugar, siempre que necesitemos usarla.
+
+Sin embargo, a veces necesitamos una función que se utilice solo en un lugar de nuestro código. Para estos casos, puede ser más simple y directo definir esta función directamente en el lugar donde se utilizará, sin darle un nombre, es decir, utilizando una función Lambda.
+
+La principal ventaja del uso de funciones lambda es la simplificación del código y la mejora en la legibilidad, ya que la función se define justo donde se usará.
+
+### Sintaxis
+
+```java
+(argumentos) -> { cuerpo-de-la-función }
+```
+
+Por ejemplo, podemos definir una función lambda que sume dos números de la siguiente manera:
+
+```java
+(a, b) -> { return a + b; }
+```
+
+Aquí, a y b son los argumentos de nuestra función. El cuerpo de la función, que es el código que se ejecutará cuando se llame a la función, está entre llaves {}. En este caso, el cuerpo de la función es solo una línea que devuelve la suma de a y b.
+
+En Java, las funciones lambda se utilizan generalmente con interfaces funcionales. Una interfaz funcional es una interfaz que contiene solo un único método. La función lambda luego proporciona la implementación de ese único método.
+
+Supongamos que tenemos una lista de números y queremos imprimir solo los números pares de esa lista. Sin el uso de funciones lambda, podríamos hacer algo así:
+
+```java
+List<Integer> lista = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+for(Integer i: lista) {
+  if(i % 2 == 0) {
+    System.out.println(i);
+  }
+}
+```
+
+Pero con el uso de funciones lambda, podemos simplificar este código:
+
+
+```java
+List<Integer> lista = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+lista.stream().filter(i -> i % 2 == 0).forEach(System.out::println);
+```
+
+En el código anterior, creamos un stream de nuestra lista, filtramos ese `stream` para incluir solo los números pares (esto se hace con la función lambda `i -> i % 2 == 0`), y finalmente usamos el método `forEach` para imprimir cada elemento del stream filtrado.
+
+## Lo que hemos aprendido
+
+- APIs y Consultas Detalladas: Descubrimos cómo trabajar con APIs para obtener información detallada y realizar consultas más específicas.
+- Uso de Anotaciones @JsonAlias y @JsonIgnoreProperties: Exploramos la importancia de utilizar estas funciones para mapear la API a la aplicación.
+- Creación de Métodos para Interacción con el Usuario: Creamos un método para mostrar el menú e interactuar con el usuario, permitiéndoles ingresar el nombre de la serie que desean buscar.
+- Manipulación de Datos de una API: Mostramos cómo importar y manipular datos de una API, en este caso, datos de series de televisión.
+- Manipulación de Cadenas para Acceder a una API: Observamos cómo manipular cadenas para crear direcciones que la API entenderá y devolverá los datos deseados.
+- Introducción a los Lambdas: Conocimos las Expresiones Lambda en Java, también conocidas como funciones anónimas que podemos usar para escribir código más eficiente.
+
 ## Folder Structure en VSCode
 
 The workspace contains two folders by default, where:

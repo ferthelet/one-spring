@@ -35,8 +35,8 @@ public class Principal {
 
         // mostrar solo titulo de los episodios para la temporadas
         temporadas.forEach(temporada -> temporada.episodios()
-                .forEach(episodio -> System.out.println("S: " + temporada.numero() +", E: " + episodio.numeroEpisodio() + ", C: " + episodio.titulo())));
-
+                .forEach(episodio -> System.out.println("S: " + temporada.numero() + ", E: "
+                 + episodio.numeroEpisodio() + ", C: " + episodio.titulo())));
     }
 
 }

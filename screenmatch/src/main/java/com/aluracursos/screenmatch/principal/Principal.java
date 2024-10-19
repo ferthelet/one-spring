@@ -31,7 +31,11 @@ public class Principal {
             json = consumoAPI.obtenerDatos(URL_BASE + nombreSerie.replace(" ", "+") + "&Season=" + i + API_KEY);
             temporadas.add(conversor.obtenerDatos(json, DatosTemporadas.class));
         }
-        temporadas.forEach(System.out::println);
+        // temporadas.forEach(System.out::println);
+
+        // mostrar solo titulo de los episodios para la temporadas
+        temporadas.forEach(temporada -> temporada.episodios()
+                .forEach(episodio -> System.out.println("S: " + temporada.numero() +", E: " + episodio.numeroEpisodio() + ", C: " + episodio.titulo())));
 
     }
 

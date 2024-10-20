@@ -325,7 +325,6 @@ for(Integer i: lista) {
 
 Pero con el uso de funciones lambda, podemos simplificar este código:
 
-
 ```java
 List<Integer> lista = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
 

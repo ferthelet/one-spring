@@ -13,6 +13,8 @@ public class EjemploStreams {
         nombres.stream()
         .sorted()
         .limit(4)
+        .filter(n -> n.startsWith("J"))
+        .map(n -> n.toUpperCase())
         .forEach(System.out::println);
     }
 

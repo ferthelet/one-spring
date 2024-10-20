@@ -8,6 +8,8 @@ import java.util.Arrays;
 public class EjemploStreams {
     public void muestraEjemplo() {
 
+        // ejemplo streams 
+
         List<String> nombres = Arrays.asList("Juan", "Pedro", "Maria", "Jose", "Luis");
 
         nombres.stream()

@@ -333,7 +333,7 @@ lista.stream().filter(i -> i % 2 == 0).forEach(System.out::println);
 
 En el código anterior, creamos un stream de nuestra lista, filtramos ese `stream` para incluir solo los números pares (esto se hace con la función lambda `i -> i % 2 == 0`), y finalmente usamos el método `forEach` para imprimir cada elemento del stream filtrado.
 
-## Lo que hemos aprendido
+## Streams lo aprendido
 
 - APIs y Consultas Detalladas: Descubrimos cómo trabajar con APIs para obtener información detallada y realizar consultas más específicas.
 - Uso de Anotaciones @JsonAlias y @JsonIgnoreProperties: Exploramos la importancia de utilizar estas funciones para mapear la API a la aplicación.
@@ -341,6 +341,74 @@ En el código anterior, creamos un stream de nuestra lista, filtramos ese `strea
 - Manipulación de Datos de una API: Mostramos cómo importar y manipular datos de una API, en este caso, datos de series de televisión.
 - Manipulación de Cadenas para Acceder a una API: Observamos cómo manipular cadenas para crear direcciones que la API entenderá y devolverá los datos deseados.
 - Introducción a los Lambdas: Conocimos las Expresiones Lambda en Java, también conocidas como funciones anónimas que podemos usar para escribir código más eficiente.
+
+## Streams operaciones intermedias y finales
+
+Los streams son una nueva forma de trabajar con colecciones de datos en Java, introducidas a partir de Java 8. Permiten realizar operaciones de manera más eficiente y concisa, utilizando un enfoque funcional.
+
+Un stream es una secuencia de elementos que puede procesarse en paralelo o en serie. Puede crearse a partir de una colección, un array, un archivo, entre otros. A partir de ahí, podemos realizar diversas operaciones en ese stream, como filtrar, mapear, ordenar, entre otras.
+
+Las operaciones intermedias son aquellas que pueden aplicarse en un stream y retornan un nuevo stream como resultado. Estas operaciones no se ejecutan inmediatamente, sino solo cuando se llama a una operación final.
+
+Veamos algunos ejemplos de operaciones intermedias:
+
+### Filter
+
+Permite filtrar los elementos del stream basándose en una condición. Por ejemplo, podemos filtrar una lista de números para devolver solo los números pares.
+
+```java
+List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+List<Integer> numerosPares = numeros.stream()
+                                   .filter(n -> n % 2 == 0)
+                                   .collect(Collectors.toList());
+System.out.println(numerosPares); // Salida: [2, 4, 6, 8, 10]
+```
+
+### Map
+
+Permite transformar cada elemento del stream en otro tipo de dato. Por ejemplo, podemos transformar una lista de cadenas en una lista de sus respectivas longitudes.
+
+```java
+List<String> palabras = Arrays.asList("Java", "Stream", "Operaciones", "Intermedias");
+List<Integer> tamaños = palabras.stream()
+                                .map(s -> s.length())
+                                .collect(Collectors.toList());
+System.out.println(tamaños); // Salida: [4, 6, 11, 17]
+```
+
+Las operaciones finales son aquellas que cierran el stream y devuelven un resultado concreto. Algunas operaciones finales comunes son forEach, collect y count.
+
+Veamos algunos ejemplos de operaciones finales:
+
+### ForEach
+
+Permite ejecutar una acción en cada elemento de la stream. Por ejemplo, podemos imprimir cada elemento de la lista.
+
+```java
+List<String> nombres = Arrays.asList("Juan", "Maria", "Pedro", "Ana");
+nombres.stream()
+     .forEach(nombre -> System.out.println("Hola, " + nombre + "!"));
+
+```  
+
+### Collect
+
+Permite recopilar los elementos de la stream en una colección o en otro tipo de dato. Por ejemplo, podemos recopilar los números pares en un conjunto.
+
+```java
+List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+Set<Integer> numerosPares = numeros.stream()
+                                   .filter(n -> n % 2 == 0)
+                                   .collect(Collectors.toSet());
+System.out.println(numerosPares); // Salida: [2, 4, 6, 8, 10]
+
+```
+
+En resumen, los streams y sus operaciones intermedias y finales son una forma poderosa de manipular colecciones de datos en Java de manera más eficiente y concisa. Permiten escribir código más legible y expresivo, facilitando el procesamiento y la transformación de datos.
+
+Además de las operaciones intermedias y finales mencionadas, hay muchas otras disponibles, como distinct (que elimina elementos duplicados), limit (que limita el número de elementos de la stream), skip (que salta los primeros elementos del stream), reduce (que combina los elementos de la stream en un único resultado) y muchas más.
+
+Los streams en Java son una herramienta poderosa para la manipulación de colecciones de datos. Las operaciones intermedias permiten filtrar, mapear y ordenar los elementos del stream, mientras que las operaciones finales cierran el stream y devuelven un resultado concreto. Combinando estas operaciones, podemos realizar transformaciones y acciones de manera concisa y eficiente.
 
 ## Folder Structure en VSCode
 
